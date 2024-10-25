@@ -44,37 +44,16 @@ public class ProductInfoService {
     }
 
     public List<Product> getList(Category category, boolean isDesc) {
-        File file = new File("products.obj");
-        if (file.exists()) {
-            try (FileInputStream fis = new FileInputStream(file);
-                 ObjectInputStream oos = new ObjectInputStream(fis)) {
-                Map<Long, Product> data = (Map<Long, Product>)oos.readObject();
 
+            Map<Long, Product> data = load();
+            if (data != null && !data.isEmpty()) {
+                List<Product> items = data.values().stream().sorted((i1, i2) -> isDesc ? Long.valueOf(i1.getSeq()).compareTo(i2.getSeq()) : Long.valueOf(i2.getSeq()).compareTo(i1.getSeq())).toList();
+                return items;
 
-                if (data != null && !data.isEmpty()) {
-                    List<Product> items = data.values().stream().sorted((i1, i2) -> isDesc ? Long.valueOf(i1.getSeq()).compareTo(i2.getSeq()) : Long.valueOf(i2.getSeq()).compareTo(i1.getSeq())).toList();
-
-                    // 분류 검색 처리 S
-                    if (category != null) {
-                        items = items.stream().filter(i -> i.getCategory() == category).toList();
-                    }
-                    // 분류 검색 처리 E
-
-                    return items;
-                }
-
-            } catch (IOException | ClassNotFoundException e) {}
-
-        Map<Long, Product> data = load();
-        if (data != null && !data.isEmpty()) {
-            List<Product> items = data.values().stream().sorted((i1, i2) -> isDesc ? Long.valueOf(i1.getSeq()).compareTo(i2.getSeq()) : Long.valueOf(i2.getSeq()).compareTo(i1.getSeq())).toList();
-            return items;
-
-        }
+            }
 
         return Collections.EMPTY_LIST;
     }
-
     /**
      * 기본 상품 목록 조회 (오름차순)
      *
@@ -97,3 +76,4 @@ public class ProductInfoService {
         return null;
     }
 }
+
