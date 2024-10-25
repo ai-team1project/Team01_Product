@@ -3,16 +3,16 @@ package org.koreait.product.entities;
 import java.io.Serializable;
 
 public class ProductSale implements Serializable {
-    private int cartNum; // 카테고리에서 세일 적용할 품목 선택
+    private int cateNum; // 카테고리에서 세일 적용할 품목 선택
     private int saleSet; // 세일 몇 퍼센트 할건지(10% ~ 40%)
     private String saleName; // 세일 행사 이름
 
-    public int getCartNum() {
-        return cartNum;
+    public int getCateNum() {
+        return cateNum;
     }
 
-    public void setCartNum(int cartNum) {
-        this.cartNum = cartNum;
+    public void setCateNum(int cateNum) {
+        this.cateNum = cateNum;
     }
 
     public int getSaleSet() {
@@ -34,7 +34,7 @@ public class ProductSale implements Serializable {
     @Override
     public String toString() {
         return "ProductSale{" +
-                "cartNum=" + cartNum +
+                "cateNum=" + cateNum +
                 ", saleSet=" + saleSet +
                 ", saleName='" + saleName + '\'' +
                 '}';
