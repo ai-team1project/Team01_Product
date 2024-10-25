@@ -11,6 +11,7 @@ import org.koreait.product.templates.ProductForm;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  * 상품 등록/수정 컨트롤러
@@ -20,7 +21,7 @@ public class ProductController extends Controller {
 
     public ProductController() {
        setPromptProcess(() -> {
-           String categorySelection = Arrays.stream(Category.values()).map(c->c.ge)
+           String categorySelection = Arrays.stream(Category.values()).map(c->c.getCateNum()+"."+c.getTitle()).collect(Collectors.joining(" "));
            Utils.drawLine('-', 30);
 
            Scanner sc = Router.sc;
