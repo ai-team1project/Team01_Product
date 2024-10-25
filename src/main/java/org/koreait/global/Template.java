@@ -9,4 +9,5 @@ import java.util.Map;
 public interface Template {
     void print();
     default void print(Model model) {}
+
 }
