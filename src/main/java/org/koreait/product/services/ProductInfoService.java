@@ -37,17 +37,10 @@ public class ProductInfoService {
      * @return
      */
     public List<Product> getList(boolean isDesc) {
-        File file = new File("products.obj");
-        if (file.exists()) {
-            try (FileInputStream fis = new FileInputStream(file);
-                 ObjectInputStream oos = new ObjectInputStream(fis)) {
-                Map<Long, Product> data = (Map<Long, Product>)oos.readObject();
-                if (data != null && !data.isEmpty()) {
-                    List<Product> items = data.values().stream().sorted((i1, i2) -> isDesc ? Long.valueOf(i1.getSeq()).compareTo(i2.getSeq()) : Long.valueOf(i2.getSeq()).compareTo(i1.getSeq())).toList();
-                    return items;
-                }
-
-            } catch (IOException | ClassNotFoundException e) {}
+        Map<Long, Product> data = load();
+        if (data != null && !data.isEmpty()) {
+            List<Product> items = data.values().stream().sorted((i1, i2) -> isDesc ? Long.valueOf(i1.getSeq()).compareTo(i2.getSeq()) : Long.valueOf(i2.getSeq()).compareTo(i1.getSeq())).toList();
+            return items;
         }
 
         return Collections.EMPTY_LIST;
@@ -60,5 +53,18 @@ public class ProductInfoService {
      */
     public List<Product> getList() {
         return getList(false);
+    }
+
+    public Map<Long, Product> load() {
+        File file = new File("products.obj");
+        if (file.exists()) {
+            try (FileInputStream fis = new FileInputStream(file);
+                 ObjectInputStream oos = new ObjectInputStream(fis)) {
+                return (Map<Long, Product>)oos.readObject();
+
+            } catch (IOException | ClassNotFoundException e) {}
+        }
+
+        return null;
     }
 }
