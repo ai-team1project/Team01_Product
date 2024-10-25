@@ -26,7 +26,7 @@ public class ProductListController extends Controller implements TypeValidator, 
             }
 
             if (!isNumber(input)) {
-                System.out.println("상품 번호는 숫자만 입력하세요.");
+                System.out.println("상품 번호는 숫자만 입력하세요!");
                 return;
             }
 
