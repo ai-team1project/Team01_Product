@@ -6,6 +6,7 @@ import org.koreait.global.libs.Utils;
 import org.koreait.main.templates.MainMenu;
 import org.koreait.product.controllers.ProductController;
 import org.koreait.product.controllers.ProductMenagementController;
+import org.koreait.product.controllers.ProductListController;
 
 /**
  * 콘솔 프로그램 메인 컨트롤러
@@ -28,7 +29,7 @@ public class MainController extends Controller {
 
             // 메뉴 이동 처리 S
             if (input.equals("1")) { // 상품 목록
-                Utils.loadController(SubController.class);
+                Utils.loadController(ProductListController.class);
 
             } else if (input.equals("2")) { // 상품 등록
                 Utils.loadController(ProductController.class);

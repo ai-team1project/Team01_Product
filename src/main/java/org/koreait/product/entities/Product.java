@@ -3,6 +3,7 @@ package org.koreait.product.entities;
 import org.koreait.product.constants.Category;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -19,8 +20,15 @@ public class Product implements Serializable {
     private int stock; // 재고
     private Category category; // 카테고리 선택
 
+    // 현재 날짜와 시간 가져오기
+    LocalDateTime now = LocalDateTime.now();
+
+
+
     private LocalDateTime regDt; // 상품등록일시
     private LocalDateTime modDt; // 상품수정일시
+
+
 
     public long getSeq() {
         return seq;
@@ -80,14 +88,12 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "seq=" + seq +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", stock=" + stock +
-                ", category=" + category +
-                ", regDt=" + regDt +
-                ", modDt=" + modDt +
-                '}';
+        return
+                "상품번호: " + seq +
+                ", 악세서리: " + category +
+                ", 상품명: '" + name + '\'' +
+                ", 가격: " + price +
+                ", 재고: " + stock +
+                ", 등록일: " + LocalDate.now() ;
     }
 }
