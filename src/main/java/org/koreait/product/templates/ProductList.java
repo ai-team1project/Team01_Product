@@ -13,11 +13,7 @@ import java.util.List;
  *
  */
 public class ProductList implements Template {
-
     private List<Product> items;
-
-
-
     @Override
     public void print() {
         System.out.println("상품목록");
