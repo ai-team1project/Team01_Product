@@ -88,6 +88,15 @@ public abstract class Controller {
     }
 
     /**
+     * 컨트롤러별 입력 새로 정의하는 경우 Runnable 인터페이스 구현체 추가
+     *
+     * 세일 품목의 데이터 저장
+     */
+    protected void setSaleItems(Runnable setPromptProcess) {
+        this.promptProcess = setPromptProcess;
+    }
+
+    /**
      * 사용자 입력 데이터 처리
      * - 컨트롤러마다 처리는 다르므로 컨트롤러 마다 정의
      *
