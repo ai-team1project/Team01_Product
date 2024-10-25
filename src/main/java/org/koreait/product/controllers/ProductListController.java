@@ -41,7 +41,7 @@ public class ProductListController extends Controller implements TypeValidator, 
 
     @Override
     protected String getPromptText() {
-        return "조회할 상품번호를 입력하세요(메인메뉴: M, 종료: Q):";
+        return " (조회할 상품번호를 입력하세요: M, 종료: Q):";
     }
 
     @Override

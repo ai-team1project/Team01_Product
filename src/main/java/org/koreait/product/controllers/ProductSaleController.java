@@ -33,7 +33,7 @@ public class ProductSaleController extends Controller {
 
             // 상품 정보 저장 처리
             ProductSaveService saveService = BeanContainer.getBean(ProductSaveService.class);
-            saveService.save(item);
+//            saveService.save(item);
 
             System.out.println("상품이 저장되었습니다.");
             // 저장 이후에 상품 목록으로 페이지 이동

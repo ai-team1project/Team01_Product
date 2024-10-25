@@ -1,12 +1,10 @@
 package org.koreait.main.controllers;
 
-import jdk.jshell.execution.Util;
 import org.koreait.global.Controller;
 import org.koreait.global.exceptions.BadRequestException;
 import org.koreait.global.libs.Utils;
 import org.koreait.main.templates.MainMenu;
 import org.koreait.product.controllers.ProductController;
-import org.koreait.product.controllers.ProductListController;
 import org.koreait.product.controllers.ProductMenagementController;
 
 /**
@@ -30,7 +28,7 @@ public class MainController extends Controller {
 
             // 메뉴 이동 처리 S
             if (input.equals("1")) { // 상품 목록
-                Utils.loadController(ProductListController.class);
+                Utils.loadController(SubController.class);
 
             } else if (input.equals("2")) { // 상품 등록
                 Utils.loadController(ProductController.class);
