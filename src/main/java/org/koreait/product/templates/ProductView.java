@@ -3,6 +3,7 @@ package org.koreait.product.templates;
 import org.koreait.global.Model;
 import org.koreait.global.Template;
 import org.koreait.product.entities.Product;
+// 할인
 
 /**
  * 상품 상세 보기 출력
