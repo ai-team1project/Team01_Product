@@ -42,5 +42,4 @@ public class ProductList implements Template {
 
         print();
     }
-
 }
