@@ -23,6 +23,7 @@ public enum Category {
         return title;
     }
     public int getCateNum(){return cateNum;}
+
     public static Category getCategory(int cateNum){
         return Arrays.stream(Category.values()).filter(c->c.cateNum==cateNum).findFirst()
                 .orElseThrow(CategoryNotFoundException::new);

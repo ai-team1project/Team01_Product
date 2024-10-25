@@ -18,6 +18,10 @@ public class Product implements Serializable {
     private String name; // 상품이름
     private int price; // 판매가
     private int stock; // 재고
+
+    private int saleSet; // 세일 몇 퍼센트 할건지(10% ~ 40%)
+    private String saleName; // 세일 행사 이름
+
     private Category category; // 카테고리 선택
 
     // 현재 날짜와 시간 가져오기
@@ -29,6 +33,21 @@ public class Product implements Serializable {
     private LocalDateTime modDt; // 상품수정일시
 
 
+    public int getSaleSet() {
+        return saleSet;
+    }
+
+    public void setSaleSet(int saleSet) {
+        this.saleSet = saleSet;
+    }
+
+    public String getSaleName() {
+        return saleName;
+    }
+
+    public void setSaleName(String saleName) {
+        this.saleName = saleName;
+    }
 
     public long getSeq() {
         return seq;

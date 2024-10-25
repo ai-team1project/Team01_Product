@@ -1,23 +1,22 @@
 package org.koreait.product.entities;
 
+import org.koreait.product.constants.Category;
+
 import java.io.Serializable;
 
-
-public class ProductSale implements Serializable {
-    private int cateNum; // 카테고리에서 세일 적용할 품목 선택
-
 public class ProductSale extends Product  implements Serializable {
-    private int cartNum; // 카테고리에서 세일 적용할 품목 선택
-
+    private Category category; // 카테고리에서 세일 적용할 품목 선택
     private int saleSet; // 세일 몇 퍼센트 할건지(10% ~ 40%)
     private String saleName; // 세일 행사 이름
 
-    public int getCateNum() {
-        return cateNum;
+    @Override
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCateNum(int cateNum) {
-        this.cateNum = cateNum;
+    @Override
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public int getSaleSet() {
@@ -39,11 +38,9 @@ public class ProductSale extends Product  implements Serializable {
     @Override
     public String toString() {
         return "ProductSale{" +
-                "cateNum=" + cateNum +
+                "category=" + category +
                 ", saleSet=" + saleSet +
                 ", saleName='" + saleName + '\'' +
                 '}';
     }
-
-
 }
