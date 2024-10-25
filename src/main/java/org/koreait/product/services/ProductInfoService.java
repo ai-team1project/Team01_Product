@@ -1,5 +1,6 @@
 package org.koreait.product.services;
 
+import org.koreait.product.constants.Category;
 import org.koreait.product.entities.Product;
 import org.koreait.product.exceptions.ProductNotFoundException;
 
@@ -36,11 +37,39 @@ public class ProductInfoService {
      * @param isDesc : false - 기본 상품번호 오름차순으로 기본 정렬, true - 상품번호 기준 내림차순으로 정렬
      * @return
      */
+
     public List<Product> getList(boolean isDesc) {
+
+        return getList(null, isDesc);
+    }
+
+    public List<Product> getList(Category category, boolean isDesc) {
+        File file = new File("products.obj");
+        if (file.exists()) {
+            try (FileInputStream fis = new FileInputStream(file);
+                 ObjectInputStream oos = new ObjectInputStream(fis)) {
+                Map<Long, Product> data = (Map<Long, Product>)oos.readObject();
+
+
+                if (data != null && !data.isEmpty()) {
+                    List<Product> items = data.values().stream().sorted((i1, i2) -> isDesc ? Long.valueOf(i1.getSeq()).compareTo(i2.getSeq()) : Long.valueOf(i2.getSeq()).compareTo(i1.getSeq())).toList();
+
+                    // 분류 검색 처리 S
+                    if (category != null) {
+                        items = items.stream().filter(i -> i.getCategory() == category).toList();
+                    }
+                    // 분류 검색 처리 E
+
+                    return items;
+                }
+
+            } catch (IOException | ClassNotFoundException e) {}
+
         Map<Long, Product> data = load();
         if (data != null && !data.isEmpty()) {
             List<Product> items = data.values().stream().sorted((i1, i2) -> isDesc ? Long.valueOf(i1.getSeq()).compareTo(i2.getSeq()) : Long.valueOf(i2.getSeq()).compareTo(i1.getSeq())).toList();
             return items;
+
         }
 
         return Collections.EMPTY_LIST;

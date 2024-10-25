@@ -5,11 +5,11 @@ import org.koreait.product.exceptions.CategoryNotFoundException;
 import java.util.Arrays;
 
 public enum Category {
-    TOP("상의",1),
-    BOTTOM("하의",2),
-    ACCESSORY("액세서리",3),
-    SHOES("신발",4),
-    OUTER("아우터",5);
+    TOP("TOP",1),
+    BOTTOM("BOTTOM",2),
+    ACCESSORY("ACCESSORY",3),
+    SHOES("SHOES",4),
+    OUTER("OUTER",5);
 
     private final String title;
     private final int cateNum;
