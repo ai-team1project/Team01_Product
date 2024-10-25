@@ -2,7 +2,6 @@ package org.koreait.product.controllers;
 
 import org.koreait.global.BeanContainer;
 import org.koreait.global.Controller;
-import org.koreait.global.Router;
 import org.koreait.global.libs.Utils;
 import org.koreait.product.constants.Category;
 import org.koreait.product.entities.Product;
@@ -11,7 +10,9 @@ import org.koreait.product.services.ProductSaveService;
 import org.koreait.product.templates.ProductForm;
 
 import java.util.Arrays;
+
 import java.util.Scanner;
+
 import java.util.stream.Collectors;
 
 /**
@@ -25,9 +26,17 @@ public class ProductController extends Controller {
            String categorySelection = Arrays.stream(Category.values()).map(c->c.getCateNum()+"."+c.getTitle()).collect(Collectors.joining(" "));
            Utils.drawLine('-', 30);
 
-           Scanner sc = Router.sc;
-           Product item = new Product();
 
+           Product item = new Product();
+           /*분류 처리 S*/
+           System.out.println("카테고리를 선택하세요");
+           Utils.drawLine('-',30);
+           System.out.println(categorySelection);
+           Utils.drawLine('-',30);
+           int cateNum = Utils.getNumber("카테고리","카테고리를 선택하세요");
+           Category category = Category.getCategory(cateNum);
+           item.setCategory(category);
+            /*분류처리 E*/
            // 상품명
            String name = Utils.getString("상품명", "상품명을 입력하세요.");
            item.setName(name);
