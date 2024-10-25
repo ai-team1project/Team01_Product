@@ -21,7 +21,7 @@ public class ProductSaveService {
      *
      * @param item
      */
-    public void save(ProductSale item) {
+    public void save(Product item) {
         File file = new File("products.obj");
         Map<Long, Product> data = load();
         long seq = item.getSeq();
@@ -42,7 +42,27 @@ public class ProductSaveService {
 
         } catch (IOException e) {}
     }
+    public void save(ProductSale item) {
+        File file = new File("products.obj");
+        Map<Long, Product> data = load();
+        long seq = item.getSeq();
+        if (seq < 1L) seq = System.currentTimeMillis();
 
+        if (data.containsKey(seq)) { // 상품 정보 수정
+            item.setModDt(LocalDateTime.now());
+        } else { // 상품 정보 등록
+            item.setSeq(seq);
+            item.setRegDt(LocalDateTime.now());
+        }
+
+        data.put(seq, item);
+
+        try (FileOutputStream fos = new FileOutputStream(file);
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(data);
+
+        } catch (IOException e) {}
+    }
     /**
      * 상품 정보 목록 파일에서 로드
      *

@@ -13,7 +13,10 @@ public class CommonException extends RuntimeException {
     public CommonException(String message, int code) {
         super(message);
         this.code = code;
+        logException(message); // 예외 로그 기록
     }
+
+
 
     public int getCode() {
         return code;
@@ -21,5 +24,12 @@ public class CommonException extends RuntimeException {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    // 예외 로그 기록 메서드
+    private void logException(String message) {
+        // 여기에 로그를 기록하는 로직을 추가합니다.
+        // 예를 들어, 파일에 기록하거나, 로깅 프레임워크를 사용할 수 있습니다.
+        System.err.println("Exception occurred: " + message); // 간단한 콘솔 로그 예시
     }
 }
