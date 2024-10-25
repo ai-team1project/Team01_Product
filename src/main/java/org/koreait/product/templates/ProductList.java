@@ -23,7 +23,7 @@ public class ProductList implements Template {
         if (items != null && !items.isEmpty()) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
             for (Product item : items) {
-                System.out.printf("상품번호: %d / 상품명: %s / 판매가: %d원 / 등록일: %s%n", item.getSeq(), item.getName(), item.getPrice(), formatter.format(item.getRegDt()));
+                System.out.printf("상품번호: %d | 카테고리: %s | 상품명: %s | 판매가: %d원 | 등록일: %s%n", item.getSeq(), item.getCategory(), item.getName(), item.getPrice(), formatter.format(item.getRegDt()));
             }
             return;
         }
