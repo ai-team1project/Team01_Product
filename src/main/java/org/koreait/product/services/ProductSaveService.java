@@ -1,6 +1,7 @@
 package org.koreait.product.services;
 
 import org.koreait.product.entities.Product;
+import org.koreait.product.entities.ProductSale;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -20,7 +21,7 @@ public class ProductSaveService {
      *
      * @param item
      */
-    public void save(Product item) {
+    public void save(ProductSale item) {
         File file = new File("products.obj");
         Map<Long, Product> data = load();
         long seq = item.getSeq();

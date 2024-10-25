@@ -20,7 +20,7 @@ public class ProductController extends Controller {
 
     public ProductController() {
        setPromptProcess(() -> {
-           String categorySelection = Arrays.stream(Category.values()).map(c->c.ge)
+           String categorySelection = Arrays.stream(Category.values()).map(c->c.ge);
            Utils.drawLine('-', 30);
 
            Scanner sc = Router.sc;
