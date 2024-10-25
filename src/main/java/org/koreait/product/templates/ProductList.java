@@ -27,7 +27,6 @@ public class ProductList implements Template {
             }
             return;
         }
-
         System.out.println("등록된 상품이 없습니다.");
     }
 
