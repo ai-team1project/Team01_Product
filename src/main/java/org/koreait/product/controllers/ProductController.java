@@ -4,10 +4,12 @@ import org.koreait.global.BeanContainer;
 import org.koreait.global.Controller;
 import org.koreait.global.Router;
 import org.koreait.global.libs.Utils;
+import org.koreait.product.constants.Category;
 import org.koreait.product.entities.Product;
 import org.koreait.product.services.ProductSaveService;
 import org.koreait.product.templates.ProductForm;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -18,6 +20,7 @@ public class ProductController extends Controller {
 
     public ProductController() {
        setPromptProcess(() -> {
+           String categorySelection = Arrays.stream(Category.values()).map(c->c.ge)
            Utils.drawLine('-', 30);
 
            Scanner sc = Router.sc;

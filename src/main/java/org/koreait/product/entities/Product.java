@@ -1,5 +1,7 @@
 package org.koreait.product.entities;
 
+import org.koreait.product.constants.Category;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -15,7 +17,7 @@ public class Product implements Serializable {
     private String name; // 상품이름
     private int price; // 판매가
     private int stock; // 재고
-    private int categoryChoice; // 카테고리 선택
+    private Category category; // 카테고리 선택
 
     private LocalDateTime regDt; // 상품등록일시
     private LocalDateTime modDt; // 상품수정일시
@@ -68,12 +70,12 @@ public class Product implements Serializable {
         this.regDt = regDt;
     }
 
-    public int getCategoryChoice() {
-        return categoryChoice;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryChoice(int categoryChoice) {
-        this.categoryChoice = categoryChoice;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override
@@ -83,9 +85,9 @@ public class Product implements Serializable {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", stock=" + stock +
+                ", category=" + category +
                 ", regDt=" + regDt +
                 ", modDt=" + modDt +
-                ", categoryChoice" + categoryChoice +
                 '}';
     }
 }
