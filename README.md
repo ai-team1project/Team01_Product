@@ -30,3 +30,4 @@
 
 참고)
 상품명, 카테고리로 할인률 적용 (관리자가 정해놓은 기준으로 최소 10 ~ 최대 40)
+![image](https://github.com/user-attachments/assets/26170b60-f470-47c6-b8e5-aa1cf432d262)
