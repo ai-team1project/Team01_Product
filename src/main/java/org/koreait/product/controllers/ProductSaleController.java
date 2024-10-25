@@ -4,29 +4,30 @@ import org.koreait.global.BeanContainer;
 import org.koreait.global.Controller;
 import org.koreait.global.Router;
 import org.koreait.global.libs.Utils;
+import org.koreait.product.constants.Category;
 import org.koreait.product.entities.Product;
-import org.koreait.product.entities.ProductSale;
 import org.koreait.product.services.ProductSaveService;
 
 import java.util.Scanner;
 
 // 겨울 아우터 할인 진행
-public class ProductSaleController extends ProductController {
+public class ProductSaleController extends Controller {
 
     public ProductSaleController() {
         setPromptProcess(() -> {
             Utils.drawLine('-', 30);
 
             Scanner sc = Router.sc;
-            ProductSale items = new ProductSale();
+            Product items = new Product();
 
             // 세일 품목 선택
-            int cartNum = Utils.getNumber("세일품목", "세일 품목을 선택하세요.");
-            items.setCartNum(cartNum);
+            int cateNum = Utils.getNumber("세일품목", "세일 품목을 선택하세요.");
+            Category category = Category.getCategory(cateNum);
+            items.setCategory(category);
 
             // 세일 퍼센트
             int saleSet = Utils.getNumber("세일퍼센트", "몇 퍼센트 세일 하시겠습니까?");
-            items.setCartNum(saleSet);
+            items.setSaleSet(saleSet);
 
             // 세일 행사 이름
             String saleName = Utils.getString("행사이름", "세일 행사 이름을 입력하세요");
